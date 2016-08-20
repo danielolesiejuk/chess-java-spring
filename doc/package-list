@@ -1,0 +1,11 @@
+com.capgemini.chess
+com.capgemini.chess.batch
+com.capgemini.chess.dao
+com.capgemini.chess.dao.impl
+com.capgemini.chess.dataaccess.entities
+com.capgemini.chess.enums
+com.capgemini.chess.rest
+com.capgemini.chess.service
+com.capgemini.chess.service.impl
+com.capgemini.chess.service.mapper
+com.capgemini.chess.service.to
