@@ -10,11 +10,7 @@ import com.capgemini.chess.dataaccess.entities.MatchEntity;
  * @author DOLESIEJ
  *
  */
-public interface MatchDao {
+public interface MatchDao extends Dao <MatchEntity, Long>{
 	
 	List<MatchEntity> findAllMatchesNotFinished();
-	
-	void save(List<MatchEntity> allArbitratedMatches);
-	
-
 }

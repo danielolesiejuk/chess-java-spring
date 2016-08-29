@@ -1,13 +1,10 @@
 package com.capgemini.chess.batch;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-import com.capgemini.chess.dataaccess.entities.MatchEntity;
-import com.capgemini.chess.enums.GameArbitration;
 import com.capgemini.chess.service.MatchService;
 /**
  * batches executed in period
@@ -22,7 +19,7 @@ public class ScheduledTimeReport {
 	private MatchService matchService;
 
 	private static final SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-
+/*
 	@Scheduled(fixedRate = 10000)
 	public void reportCurrentTime() {
 		System.out.println("The time is now " + dateFormat.format(new Date()));
@@ -31,8 +28,9 @@ public class ScheduledTimeReport {
 	@Scheduled(fixedRate = 10000)
 	public void arbitrate() {
 		for (MatchEntity gracz : matchService.arbitrateMatches(matchService.findAllMatchesNotFinished())) {
-			if (gracz.getMatch().getGameArbitration() != GameArbitration.NONE)
-				System.out.println("Player "+gracz.getMatch().getPlayer()+ " "+ gracz.getMatch().getGameArbitration().name());
+			if (gracz.getGameArbitration() != GameArbitration.NONE)
+				System.out.println("Player "+gracz.getPlayer()+ " "+ gracz.getGameArbitration().name());
 		}
 	}
+*/
 }

@@ -1,6 +1,8 @@
 package com.capgemini.chess.service;
 
-import com.capgemini.chess.service.to.UserProfileTO;
+import java.util.List;
+
+import com.capgemini.chess.dataaccess.entities.UserEntity;
 /**
  * @findPlayerByLogin service for find player by login form DB
  * @findPlayerByName service for find player by name form DB
@@ -10,11 +12,10 @@ import com.capgemini.chess.service.to.UserProfileTO;
  */
 public interface UserService {
 
-	UserProfileTO findPlayerByLogin(String login);
-
-	UserProfileTO findPlayerByName(String name);
-
-	UserProfileTO sendChallengeToOpponent(UserProfileTO opponent);
-
-	UserProfileTO deletePlayerByLogin(String login);
+	UserEntity findPlayerByLogin(String login);
+	UserEntity findPlayerByName(String name);
+	List<UserEntity> findAllPlayers();
+	void deletePlayerByLogin(Long loginId);
+	UserEntity addPlayer(UserEntity user);
+	UserEntity editPlayer(UserEntity user);
 }

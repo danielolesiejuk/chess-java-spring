@@ -2,14 +2,13 @@ package com.capgemini.chess;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.scheduling.annotation.EnableScheduling;
 
 /**
  * run tasks by start batches
  * @author DOLESIEJ
  *
  */
-@EnableScheduling
+//@EnableScheduling
 @SpringBootApplication
 public class ChessApplication {
 

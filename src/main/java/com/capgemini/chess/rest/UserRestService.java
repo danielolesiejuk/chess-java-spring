@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.capgemini.chess.service.UserService;
+import com.capgemini.chess.dataaccess.entities.ChallengeEntity;
+import com.capgemini.chess.facade.UserFacade;
+import com.capgemini.chess.service.to.ChallengeTO;
 import com.capgemini.chess.service.to.UserProfileTO;
 
 @Controller
@@ -16,7 +18,7 @@ import com.capgemini.chess.service.to.UserProfileTO;
 public class UserRestService {
 
 	@Autowired
-	private UserService userService;
+	private UserFacade userFacade;
 
 	public UserRestService() {
 	}
@@ -27,7 +29,7 @@ public class UserRestService {
 	 */
 	@RequestMapping(value = "/rest/findLogin", method = RequestMethod.GET)
 	public UserProfileTO findPlayerByLogin(@RequestParam("login") String login) {
-		return userService.findPlayerByLogin(login);
+		return userFacade.findPlayerByLogin(login);
 	}
 	/**
 	 * method implements search by name functionality
@@ -36,7 +38,7 @@ public class UserRestService {
 	 */
 	@RequestMapping(value = "/rest/findName", method = RequestMethod.GET)
 	public UserProfileTO findPlayerByName(@RequestParam("name") String name) {
-		return userService.findPlayerByName(name);
+		return userFacade.findPlayerByName(name);
 	}
 	/**
 	 * method implements sending requests to an opponent
@@ -44,8 +46,8 @@ public class UserRestService {
 	 * @return 
 	 */
 	@RequestMapping(value = "/rest/sendChallenge", method = RequestMethod.POST)
-	public UserProfileTO sendChallengeToOpponent(@RequestBody UserProfileTO opponent) {
-		return userService.sendChallengeToOpponent(opponent);
+	public ChallengeTO sendChallengeToOpponent(@RequestBody ChallengeEntity challenge) {
+		return userFacade.sendChallengeToOpponent(challenge);
 	}
 	/**
 	 * method implements delete user by login functionality
@@ -53,8 +55,8 @@ public class UserRestService {
 	 * @return TO's User Profile
 	 */
 	@RequestMapping(value = "/rest/deleteLogin", method = RequestMethod.DELETE)
-	public UserProfileTO deletePlayerByLogin(@RequestParam("login") String login) {
-		return userService.deletePlayerByLogin(login);
+	public void deletePlayerByLogin(@RequestParam("loginId") Long loginId) {
+		userFacade.deletePlayerByLogin(loginId);
 	}
 
 }

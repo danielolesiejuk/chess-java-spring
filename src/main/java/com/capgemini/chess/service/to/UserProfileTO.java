@@ -16,7 +16,6 @@ public class UserProfileTO {
 	}
 
 	public UserProfileTO(long id, String login, String name) {
-		super();
 		this.id = id;
 		this.login = login;
 		this.name = name;

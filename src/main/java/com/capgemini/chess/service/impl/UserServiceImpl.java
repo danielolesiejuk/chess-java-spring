@@ -1,12 +1,13 @@
 package com.capgemini.chess.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capgemini.chess.dao.UserDao;
+import com.capgemini.chess.dataaccess.entities.UserEntity;
 import com.capgemini.chess.service.UserService;
-import com.capgemini.chess.service.mapper.UserProfileMapper;
-import com.capgemini.chess.service.to.UserProfileTO;
 /**
  * implementation of UserService
  * @findPlayerByLogin service for find player by login form DB
@@ -22,22 +23,33 @@ public class UserServiceImpl implements UserService {
 	private UserDao userDao;
 
 	@Override
-	public UserProfileTO findPlayerByLogin(String login) {
-		return UserProfileMapper.map(userDao.findPlayerByLogin(login));
+	public UserEntity findPlayerByLogin(String login) {
+		return userDao.findPlayerByLogin(login);
 	}
 
 	@Override
-	public UserProfileTO findPlayerByName(String name) {
-		return UserProfileMapper.map(userDao.findPlayerByName(name));
+	public UserEntity findPlayerByName(String name) {
+		return userDao.findPlayerByName(name);
 	}
 
 	@Override
-	public UserProfileTO sendChallengeToOpponent(UserProfileTO opponent) {
-		return UserProfileMapper.map(userDao.sendChallengeToOpponent(UserProfileMapper.map(opponent)));
+	public void deletePlayerByLogin(Long loginId) {
+		userDao.delete(loginId);
 	}
 	
-	public UserProfileTO deletePlayerByLogin(String login) {
-		return UserProfileMapper.map(userDao.deletePlayerByLogin(login));
+	@Override
+	public UserEntity addPlayer(UserEntity user) {
+		return userDao.save(user);
+	}
+
+	@Override
+	public UserEntity editPlayer(UserEntity user) {
+		return userDao.update(user);
+	}
+
+	@Override
+	public List<UserEntity> findAllPlayers() {
+		return userDao.findAll();
 	}
 
 }

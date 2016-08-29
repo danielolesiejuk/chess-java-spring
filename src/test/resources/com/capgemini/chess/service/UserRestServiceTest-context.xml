@@ -7,6 +7,6 @@
 
 	<bean id="userRestService" class="com.capgemini.chess.rest.UserRestService" />
 	<bean class="org.mockito.Mockito" factory-method="mock">
-		<constructor-arg value="com.capgemini.chess.service.UserService" />
+		 <constructor-arg value="com.capgemini.chess.facade.UserFacade" />
 	</bean>
 </beans>
